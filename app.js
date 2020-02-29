@@ -9,7 +9,7 @@ if(isNaN(start) || isNaN(finish)|| isNaN(interval)){document.getElementById("lin
 
 else if (inteval = 0) {document.getElementById("lineOne").innerHTML = 'Inteval cannot be zero. Please refresh and try again'}
 
-else if ((finish-start)%interval !== 0) {document.getElementById("lineOne").innerHTML = 'The difference between the start and finish must be divisible by the interval. Please refresh and try again'}
+else if ((finish-start)%interval !== 0 || finish === start) {document.getElementById("lineOne").innerHTML = 'The difference between the start and finish must be divisible by the interval. Please refresh and try again'}
 
 else if ((finish > start && interval < 0)||(finish < start && interval > 0)){ document.getElementById("lineOne").innerHTML = 'The interval does not move in the right direction. Please refresh and try again'}
 
