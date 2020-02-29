@@ -5,13 +5,13 @@ let interval = Number(prompt('Interval:'))
 
 
 
-if(isNaN(start) || isNaN(finish)|| isNaN(interval)){document.getElementById("output").innerHTML = 'Incorrect number format. Please refresh and try again'}
+if(isNaN(start) || isNaN(finish)|| isNaN(interval)){document.getElementById("lineOne").innerHTML = 'Incorrect number format. Please refresh and try again'}
 
-else if (inteval = 0) {document.getElementById("output").innerHTML = 'Inteval cannot be zero. Please refresh and try again'}
+else if (inteval = 0) {document.getElementById("lineOne").innerHTML = 'Inteval cannot be zero. Please refresh and try again'}
 
-else if ((finish-start)%interval !== 0) {document.getElementById("output").innerHTML = 'The difference between the start and finish must be divisible by the interval. Please refresh and try again'}
+else if ((finish-start)%interval !== 0) {document.getElementById("lineOne").innerHTML = 'The difference between the start and finish must be divisible by the interval. Please refresh and try again'}
 
-else if ((finish > start && interval < 0)||(finish < start && interval > 0)){ document.getElementById("output").innerHTML = 'The interval does not move in the right direction. Please refresh and try again'}
+else if ((finish > start && interval < 0)||(finish < start && interval > 0)){ document.getElementById("lineOne").innerHTML = 'The interval does not move in the right direction. Please refresh and try again'}
 
 else{
 
@@ -36,7 +36,9 @@ for (let i = 0; i < initialArray.length; i+=1){
   binaryArray.push(initialArray[i].toString(2))
 }
 
-document.getElementById("output").innerHTML = `List of numbers: ${initialArray}\nSum of Numbers: ${arraySum}\nBinary of Numbers: ${binaryArray}`
+document.getElementById("lineOne").innerHTML = `List of numbers: ${initialArray}`
+document.getElementById("lineTwo").innerHTML = `Sum of Numbers: ${arraySum}`
+document.getElementById("lineThree").innerHTML = `Binary of Numbers: ${binaryArray}`
 }
 
 /*
