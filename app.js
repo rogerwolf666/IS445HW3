@@ -1,54 +1,52 @@
 
-let start = Number(prompt('Start:'))
-let finish = Number(prompt('Finish:'))
-let interval = Number(prompt('Interval:'))
-
-
-
-if(isNaN(start) || isNaN(finish)|| isNaN(interval)){document.getElementById("lineOne").innerHTML = 'Incorrect number format. Please refresh and try again'}
-
-else if (inteval = 0) {document.getElementById("lineOne").innerHTML = 'Inteval cannot be zero. Please refresh and try again'}
-
-else if ((finish-start)%interval !== 0 || finish === start) {document.getElementById("lineOne").innerHTML = 'The difference between the start and finish must be divisible by the interval. Please refresh and try again'}
-
-else if ((finish > start && interval < 0)||(finish < start && interval > 0)){ document.getElementById("lineOne").innerHTML = 'The interval does not move in the right direction. Please refresh and try again'}
-
-else{
-
-homeworkFunction(start, finish, interval)
-
-}
-
-function homeworkFunction(start, finish, interval) {
-
+//set up input variables and array constant
+const start = Number(prompt('Enter the start:'))
+const finish = Number(prompt('Enter the finish:'))
+const interval = Number(prompt('Enter the step:'))
 const initialArray =[]
-let arraySum = 0
-const binaryArray = []
 
-if(finish > start){
-for (let i = start; i <= finish; i += interval) {initialArray.push(i);}}
-else {for (let i = start; i >= finish; i += interval) {initialArray.push(i);}}
+//give error if any input is not a number
+if(isNaN(start) || isNaN(finish)|| isNaN(interval)){document.getElementById("lineOne").innerHTML = 'Invalid integer input, please reload and try again.'}
 
-for (let i = 0; i < initialArray.length; i+=1){
-  arraySum += initialArray[i]}
+//give error if step is zero
+else if (inteval = 0) {document.getElementById("lineOne").innerHTML = 'Step cannot be zero, please reload and try again.'}
 
-for (let i = 0; i < initialArray.length; i+=1){
-  binaryArray.push(initialArray[i].toString(2))
+//give error if difference between start and finish can't be divided by the step
+else if ((finish-start)%interval !== 0 || finish === start) {document.getElementById("lineOne").innerHTML = 'The difference between the start and finish must be divisible by the step, please reload and try again.'}
+
+//give error if the step goes in wrong direction
+else if ((finish > start && interval < 0)||(finish < start && interval > 0)){ document.getElementById("lineOne").innerHTML = 'The step does not move in the right direction, please reload and try again.'}
+
+//if the inputs are correct call the three functions
+else{
+arrayFunction(start, finish, interval)
+sumFunction(initialArray)
+binaryFunction(initialArray)
 }
 
-document.getElementById("lineOne").innerHTML = `List of numbers: ${initialArray}`
-document.getElementById("lineTwo").innerHTML = `Sum of Numbers: ${arraySum}`
-document.getElementById("lineThree").innerHTML = `Binary of Numbers: ${binaryArray}`
+//function to fill in the array with numbers from start to finish adding the interval at each round of the loop
+function arrayFunction(start, finish, interval) {
+  if(finish > start){
+    for (let i = start; i <= finish; i += interval) {initialArray.push(i);}}
+    else {for (let i = start; i >= finish; i += interval) {initialArray.push(i);}}
+
+    document.getElementById("lineOne").innerHTML = `The generated array is ${initialArray}`
 }
 
-/*
-function test(age) {
-  if(age < 18) { alert('must be 18 or older')}
-  else { alert ('you can drive by yourself')}
+//function to add up all the numbers within the array
+function sumFunction(initialArray){
+  let arraySum = 0
+  for (let i = 0; i < initialArray.length; i+=1){
+    arraySum += initialArray[i]}
+    
+    document.getElementById("lineTwo").innerHTML = `The sum is ${arraySum}`
 }
 
-const inputStr = prompt('How old are you?')
-const age = Number(inputStr)
-
-if (isNaN(age)) {alert ('Please input valid number')}
-else {test(age)}*/
+//convert each number in the array to binary
+function binaryFunction(initialArray){
+  const binaryArray = []
+  for (let i = 0; i < initialArray.length; i+=1){
+    binaryArray.push(initialArray[i].toString(2))}
+    
+    document.getElementById("lineThree").innerHTML = `The binary of absolute element values are: ${binaryArray}`
+}
